@@ -1,3 +1,5 @@
+// Async Await con argumentos
+
 const getUsuariosIDs = new Promise((response, reject) => {
 	setTimeout(() => {
 		response([101, 102, 103, 105])
