@@ -3,4 +3,8 @@ git status
 git add --all
 git commit -m 'This is my first commit, the course is not finished yet!'
 git remote add origin https://github.com/CarlosTechTalents/curso-javascript-node.git
-git push -u origin master
+git push -u origin main
+
+git branch -m master main
+git fetch origin
+git branch -u origin/main main
