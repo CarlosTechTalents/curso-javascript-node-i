@@ -2,7 +2,7 @@
 //  PROGRAMADO POR: GONZALO DE ANTONIO  //
 //////////////////////////////////////////
 
-var juegoCartas = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
+var juegoCartas = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
 var victoria = 0
 var fallos = 0
 var segundos = 0
@@ -16,33 +16,23 @@ var intervaloReloj
 
 function generarCartas() {
 	if (!juegoIniciado) {
-		for (var i = 0; i < 6; i++) {
-			var randomNum = Math.floor(Math.random() * 12)
-			var bucle = true
-			while (bucle == true) {
-				if (juegoCartas[randomNum] == -1) {
-					juegoCartas[randomNum] = i
-					bucle = false
-				} else {
-					randomNum = Math.floor(Math.random() * 12)
+		for (var n = 0; n < 2; n++) {
+			for (var i = 0; i < 6; i++) {
+				var randomNum = Math.floor(Math.random() * 12)
+				var bucle = true
+				while (bucle == true) {
+					if (juegoCartas[randomNum] == -1) {
+						juegoCartas[randomNum] = i
+						bucle = false
+					} else {
+						randomNum = Math.floor(Math.random() * 12)
+					}
 				}
 			}
 		}
-		for (var i = 0; i < 6; i++) {
-			var randomNum = Math.floor(Math.random() * 12)
-			var bucle = true
-			while (bucle == true) {
-				if (juegoCartas[randomNum] == -1) {
-					juegoCartas[randomNum] = i
-					bucle = false
-				} else {
-					randomNum = Math.floor(Math.random() * 12)
-				}
-			}
-		}
-		for (var i = 0; i < 12; i++) {
-			console.log(juegoCartas[i])
-		}
+
+		console.log(juegoCartas)
+
 		juegoIniciado = true
 		intervaloReloj = setInterval(reloj, 1000)
 		document.querySelector('#textoFallos').textContent = 'FALLOS: 0'

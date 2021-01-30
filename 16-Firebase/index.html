@@ -1,147 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Firebase</title>
 
-		<!-- Bootstrap. -->
-		<link
-			rel="stylesheet"
-			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-			integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-			crossorigin="anonymous"
-		/>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Firebase</title>
 
-		<!-- Estilo personalizado. -->
-		<link rel="stylesheet" type="text/css" media="screen" href="custom.css" />
+	<!-- Bootstrap. -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
 
-		<!-- Materialize. Compiled and minified CSS -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<!-- Material Icons-->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
-		<!-- Materialize. Compiled and minified JavaScript -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-	</head>
+	<!-- Estilos personalizado. -->
+	<link rel="stylesheet" type="text/css" media="screen" href="custom-bootstrap.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="custom.css" />
+</head>
 
-	<body>
-		<header>
-			<h5 style="margin-left: 1em">Tareas en Firebase</h5>
-			<nav>
-				<div class="nav-wrapper">
-					<a href="#" class="brand-logo right">Logo</a>
-					<ul id="nav-mobile" class="left">
-						<li>
-							<a href="https://www.techtalents.es/"><i class="material-icons left">important_devices</i>Tech Talents</a>
+<body>
+	<header>
+		<!-- Título superior de la página en la cabecera -->
+		<h5 class="m-2">Tareas en Firebase</h5>
+		<!-- Menú superior Barra de navegación -->
+		<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+			<div class="container-fluid">
+				<a class="navbar-brand mr-4" href="#"><img src="./imgs/hacker.svg" alt="" width="30" height="24"></a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item ml-2">
+							<a class="nav-link active" aria-current="page" href="https://www.techtalents.es/">
+								<span><i class="material-icons text-info float-left mr-2" style="font-size: 1.6em">important_devices</i>Tech Talents </span></a>
 						</li>
-						<li>
-							<a href="https://platypoox.com/"><i class="material-icons left">extension</i>Platypoox</a>
+						<li class="nav-item ml-2">
+							<a class="nav-link active" aria-current="page" href="https://platypoox.com/"><span> <i class="material-icons text-info float-left mr-2" style="font-size: 1.6em">extension</i>Platypoox </span></a>
 						</li>
-						<li>
-							<a href="https://platypoox.web.app/"><i class="material-icons left">laptop_mac</i>Web App</a>
+						<li class="nav-item ml-2" style="display: none">
+							<a class="nav-link active" aria-current="page" href="https://platypoox.web.app/">
+								<span><i class="material-icons text-info float-left mr-2" style="font-size: 1.6em">laptop_mac</i>Web App </span></a>
+						</li>
+
+						<li class="nav-item ml-2">
+							<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
 						</li>
 					</ul>
-				</div>
-			</nav>
-		</header>
 
-		<section>
+					<form class="d-flex col-4">
+						<input class="form-control me-2" type="search" id="filtroNavBar" placeholder="Filtrar tareas en la base de datos..." aria-label="Search" />
+						<button class="btn btn-outline-light" type="submit">Filtrar</button>
+					</form>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<section>
+		<!-- Cabecera debajo de la barra de navegación -->
+		<div id="main-header" class="bg-info text-white p-4 mb-3">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6">
-						<h1 id="header-title">Lista de Tareas</h1>
+						<h4 id="header-title">Lista de Tareas</h4>
 					</div>
 					<div class="col-md-6 align-self-center">
-						<input type="text" class="form-control" id="filtro" placeholder="Buscar item..." />
+						<input type="text" class="form-control" id="filtroTareas" placeholder="Buscar tareas..." />
 					</div>
 				</div>
 			</div>
+		</div>
 
-			<div class="container">
-				<form id="agregar-tarea-form">
-					<input type="text" name="titulo" placeholder="Agregar tarea" />
-					<button class="waves-effect waves-light btn">Añadir</button>
-				</form>
+		<!-- Formulario para agregar una tarea -->
+		<div class="container">
+			<form id="agregar-tarea-form">
+				<input type="text" name="tarea" placeholder="Agregar tarea" />
+				<button type="submit" class="btn btn-success mb-2">Añadir</button>
+			</form>
 
-				<ul class="collection with-header" id="lista-tareas">
-					<li class="collection-header" style="padding-top: 1px; padding-bottom: 1px; background-color: lightcyan">
-						<h5>Tareas</h5>
-					</li>
-					<!--
-        <li class="collection-item">
-          <div>
-            <span>Tarea 1</span>
-            <a class="secondary-content modal-trigger" href="#modal1"> <i class="material-icons">delete</i></a>
-            <a class="secondary-content modal-trigger" href="#modal1"> <i class="material-icons">edit</i></a>
-          </div>
-        </li>
-        --></ul>
+			<!-- Cabecera de la lista de tareas -->
+			<h5 class="bg-info text-white pl-2 py-2">Tareas</h5>
 
-				<!-- Modal1 -->
-				<div id="modal1" class="modal">
+			<!-- Lista de tareas. Cada item de la lista se genera desde JavaScript -->
+			<ul class="list-group" id="lista-tareas"></ul>
+
+			<!-- Modal Editar Tarea -->
+			<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
 					<div class="modal-content">
-						<h4>Actualizar</h4>
-						<input type="text" name="nuevoTitulo" placeholder="Introduce el nuevo título" />
-					</div>
-					<div class="modal-footer">
-						<a href="#!" id="boton-actualizar" class="modal-close waves-effect waves-green btn-flat">OK</a>
+
+						<div class="modal-header">
+							<h5 class="modal-title">Editar Tarea</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+
+						<div class="modal-body">
+							<form>
+								<div class="mb-3">
+									<label for="tareaActual" class="col-form-label"> Tarea Actual:</label>
+									<input type="text" class="form-control" id="tareaActual" readonly />
+								</div>
+								<div class="mb-3">
+									<label for="message-text" class="col-form-label"> Nueva tarea:</label>
+									<textarea class="form-control" id="message-text" name="nuevaTarea"> </textarea>
+								</div>
+							</form>
+						</div>
+
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary" id="editActualizar">Save changes</button>
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						</div>
 					</div>
 				</div>
 			</div>
 
 			<script>
-				document.addEventListener('DOMContentLoaded', () => {
-					var elems = document.querySelectorAll('.modal')
-					var instances = M.Modal.init(elems)
-				})
+				//				document.addEventListener('DOMContentLoaded', () => {
+				//					var elems = document.querySelectorAll('.modal')
+				//					var instances = M.Modal.init(elems)
+				//				})
 			</script>
 
-			<!-- The core Firebase JS SDK is always required and must be listed first -->
+	</section>
 
-			<script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-app.js"></script>
-			<script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-firestore.js"></script>
+	<footer class="bg-secondary text-light">
+		<div class="container">
 
-			<!-- TODO: Add SDKs for Firebase products that you want to use
+			<div class="row mt-2 pt-3">
+				<div class="col l6 s12">
+					<h5>Contacto</h5>
+					<p>Avda. Bruselas, 16<br>28108 - Alcobendas<br>Madrid<br>Spain</p>
+				</div>
+				<div class="col l4 offset-l2 s12">
+					<h5>Links</h5>
+					<ul>
+						<li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript">MDN Web Docs</a></li>
+						<li><a href="https://www.w3schools.com/js/default.asp">w3schools</a></li>
+						<li><a href="https://getbootstrap.com/">Bootstrap</a></li>
+						<li><a href="https://material.io/resources/icons/?style=baseline">Material Icons</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="row mt-2 pt-3">
+
+				<div class="container-fluid">
+					<a class="float-left" style="color:#FF7F00" href="https://www.techtalents.es/"> © 2021 Tech Talents</a>
+					<a class="text-white float-right " href="https://www.techtalents.es/"><span><i class="material-icons float-left mr-2" style="font-size: 1.6em">contact_phone</i>913 616 635</span></a>
+
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+
+	<script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-firestore.js"></script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
 				https://firebase.google.com/docs/web/setup#available-libraries -->
 
-			<script>
-				// Your web app's Firebase configuration
-				var firebaseConfig = {
-					apiKey: 'AIzaSyBDChRngd2rXjHG7SKPVoiS2cDY9JO7x-Q',
-					authDomain: 'listatareaspro.firebaseapp.com',
-					projectId: 'listatareaspro',
-					storageBucket: 'listatareaspro.appspot.com',
-					messagingSenderId: '799614537166',
-					appId: '1:799614537166:web:d76a38485e54de4daaaf9f'
-				}
-				// Initialize Firebase
-				firebase.initializeApp(firebaseConfig)
-				var db = firebase.firestore()
-			</script>
-			<script src="app.js"></script>
-		</section>
+	<!-- Inicializa Firestore con los datos de configuración -->
+	<script src="firebase.js"></script>
 
-		<footer class="page-footer">
-			<div class="container">
-				<div class="row">
-					<div class="col l6 s12">
-						<h5 class="white-text">Footer Content</h5>
-						<p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-					</div>
-					<div class="col l4 offset-l2 s12">
-						<h5 class="white-text">Links</h5>
-						<ul>
-							<li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="footer-copyright">
-				<div class="container">
-					<a class="grey-text text-lighten-4 left" href="https://www.techtalents.es/"> © 2021 Tech Talents</a>
-					<a class="grey-text text-lighten-4 right" href="https://www.techtalents.es/"><i class="material-icons left">contact_phone</i>913 616 635</a>
-				</div>
-			</div>
-		</footer>
-	</body>
+	<!-- Bootstrap JavaScript and dependencies -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+
+	<!-- Aplicación JavaScript -->
+	<script src="app.js"></script>
+
+</body>
+
 </html>
