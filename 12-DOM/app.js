@@ -172,10 +172,16 @@ document.getElementById('boton').addEventListener('click', function () {
 document.getElementById('boton').addEventListener('click', hacerClick)
 
 function hacerClick() {
-	console.log('Usted hizo click..')
+	console.log('Has hecho click..')
 	document.getElementById('header-title').textContent = 'Texto cambiado'
 }
 */
+
+//Función que se dispara al hacer click en el título de la cabecera de la página
+function clickTitulo() {
+	console.log('Has hecho click en el título')
+	alert('Has hecho click en el título')
+}
 
 //Agregar un elemento a la lista
 
@@ -243,4 +249,10 @@ function filtrarItems(e) {
 			item.style.display = 'none'
 		}
 	})
+}
+
+// Función que se dispara al hacer click en el título de la cabecera de la página
+function clickTitulo() {
+	console.log('Has hecho click en el título')
+	alert('Has hecho click en el título')
 }

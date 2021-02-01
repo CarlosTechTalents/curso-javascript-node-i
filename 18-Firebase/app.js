@@ -118,9 +118,13 @@ db.collection('tareas')
 				lista.removeChild(li)
 			} else if (element.type == 'modified') {
 				let li = lista.querySelector(`[data-id=${element.doc.id}]`)
-				li.getElementsByTagName('span')[0].textContent = nuevaTarea
+
+				// Se puede cambiar en la lista el elemento actualizado desde el valor nuevaTarea, pero ese valor es null en caso de que dos sesiones estén viendo la lista al mismo tiempo, por eso es mejor actualizarlo del valor en la base de datos, aunquue pueda tardar un poco más.
+				// li.getElementsByTagName('span')[0].textContent = nuevaTarea
+
+				li.getElementsByTagName('span')[0].textContent = element.doc.data().tarea
+				li.style = 'color: red'
 				nuevaTarea = ''
 			}
 		})
-		console.log(cambios)
 	})
