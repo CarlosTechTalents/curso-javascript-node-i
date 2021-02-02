@@ -1,0 +1,40 @@
+.logo-container {
+	text-align: center;
+	padding: 25px 0px;
+	font-weight: 700;
+}
+
+#listaDeGifs {
+	display: flex;
+	flex-flow: row;
+	flex-wrap: wrap;
+	text-align: center;
+	background-color: #f1f1f1;
+	list-style-type: none;
+	overflow: auto;
+	margin-top: 10px;
+}
+
+.gif-item {
+	padding: 0 4px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	transition: 0.3s;
+	width: 100%;
+	border-radius: 5px;
+	margin: 5px;
+	vertical-align: middle;
+}
+
+.card:hover {
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.gif-image {
+	width: 100%;
+	border-radius: 5px 5px 0 0;
+}
+
+.gif-container {
+	padding: 2px 16px;
+	margin: 2px;
+}

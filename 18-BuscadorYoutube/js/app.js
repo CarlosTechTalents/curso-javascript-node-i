@@ -47,6 +47,5 @@ const renderVideo = (item) => {
     <p>${descripcion}</p>
   </div>
   `
-
 	return li
 }
