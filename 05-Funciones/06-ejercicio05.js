@@ -1,4 +1,4 @@
-/* Hacer una función que tome como parametros de entra la base, altura y caracter de un rectángulo y lo dibuje */
+/* Hacer una función que tome como parametros de entrada la base, altura y caracter de un rectángulo y lo dibuje */
 
 function rectangulo(base, altura, caracter) {
 	var primeraLinea = ''
