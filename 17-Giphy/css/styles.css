@@ -5,9 +5,17 @@
 }
 
 #listaDeGifs {
-	display: flex;
-	flex-flow: row;
-	flex-wrap: wrap;
+	place-items: center;
+	background: linear-gradient(to top left, #3c4bbd 15%, transparent),
+		radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.2) 10%, transparent 20%) center center / 15px 15px,
+		linear-gradient(to top left, #3c4bbd, #57add8);
+
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+	/*	grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));*/
+	/*	grid-template-columns: repeat(auto-fill, minmax(1fr, 1fr, 1fr));*/
+	grid-gap: 5px;
+	align-items: stretch;
 	text-align: center;
 	background-color: #f1f1f1;
 	list-style-type: none;
@@ -16,25 +24,26 @@
 }
 
 .gif-item {
-	padding: 0 4px;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	box-shadow: 0 4px 8px 0 rgba(220, 220, 220, 0.8);
 	transition: 0.3s;
-	width: 100%;
-	border-radius: 5px;
-	margin: 5px;
-	vertical-align: middle;
+	max-width: 90%;
+	border-radius: 10px;
+	margin: 20px 10px 20px 1px;
+	vertical-align: top;
 }
 
 .card:hover {
-	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+	box-shadow: 0 8px 16px 0 rgba(220, 220, 220, 0.8);
 }
 
 .gif-image {
 	width: 100%;
-	border-radius: 5px 5px 0 0;
+	border-radius: 10px 10px 0 0;
 }
 
 .gif-container {
-	padding: 2px 16px;
-	margin: 2px;
+	background-color: azure;
+	padding: 10px 10px;
+	margin: 10px, 0px;
+	border-radius: 0 0 10px 10px;
 }

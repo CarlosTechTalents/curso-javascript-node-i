@@ -67,7 +67,7 @@ function getGifs(keyword) {
 
 // Esta función crea el elemento nuevo de la lista
 const renderGif = (item) => {
-	const fecha = item.import_datetime
+	const fecha = new Date(item.import_datetime).toLocaleDateString('es-ES')
 	const titulo = item.title
 	const imagen = item.images.fixed_width.url
 
@@ -76,8 +76,8 @@ const renderGif = (item) => {
   <div class="gif-item">
 		<img class="gif-image" src="${imagen}"/>
 		<div class="gif-container">
-	    <h5>${titulo}</h5>
-			<h6>${fecha}</h6>
+	    <h6>${titulo}</h6>
+			<p style="color: blue">${fecha}</p>
 		</div>
   </div>
   `

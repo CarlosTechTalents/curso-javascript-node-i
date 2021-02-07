@@ -36,3 +36,33 @@
 	float: right;
 	width: 73%;
 }
+
+.autor {
+	color: #f7831e;
+}
+
+.botones {
+	background: #46474a;
+	color: #ffffff;
+	border: #ccc;
+	padding: 8px 13px;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 19px;
+}
+
+.botones:hover {
+	background: #7d7e82;
+}
+
+.modal-content {
+	background-color: black;
+	border: 2px;
+	border-color: white;
+	color: orange;
+}
+
+.modal-content iframe {
+	margin: 0 auto;
+	display: block;
+}
