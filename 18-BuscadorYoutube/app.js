@@ -1,9 +1,18 @@
 // Para generar la API Key de You Tube, entrar con una cuenta de Google en https://console.cloud.google.com/
 // Crear Proyecto > APIs y servicios > Biblioteca > YouTube Data API v3 > Habilitar > Credenciales > Crear Credencial > API Key
-// Hacemos la petición GET por el método get de jQuery-Ajax
-// https://www.w3schools.com/jquery/jquery_ajax_get_post.asp
 
-const solicitudAJAX = async (token, consulta) => {
+// Función que se ejecuta al hacer click en el botón del formulario de búsqueda
+const buscarVideo = () => {
+	const consulta = document.getElementById('videoInput').value
+	document.getElementById('listaDeVideos').innerHTML = ''
+	document.getElementById('botones').innerHTML = ''
+
+	let token = ''
+	solicitudFetch(token, consulta)
+}
+
+//Petición GET a la API de Youtube
+const solicitudFetch = async (token, consulta) => {
 	try {
 		const urlYoutube = 'https://www.googleapis.com/youtube/v3/search'
 		const parametros = {
@@ -38,35 +47,13 @@ const solicitudAJAX = async (token, consulta) => {
 			listaDeVideos.appendChild(renderVideo(item))
 		})
 		let botones = getBotones(prevPageToken, nextPageToken, consulta)
-		$('#botones').append(botones)
+		document.getElementById('botones').innerHTML = botones
 	} catch (error) {
 		console.error('Error:', error)
 	}
-
-	// También se puede hacer la petición por JQuery de la siguiente forma:
-	/*
-		$.get(
-		'https://www.googleapis.com/youtube/v3/search',
-		{
-			part: 'snippet, id',
-			q: consulta,
-			pageToken: token,
-			type: 'video',
-			key: 'AIzaSyB1kW_qegN472t8UWEbhkCNY7XFecE7-68'
-		},
-		(respuesta) => {
-			console.log(respuesta)
-		}
-	)
-	*/
 }
 
-const buscarVideo = () => {
-	const consulta = document.getElementById('videoInput').value
-	let token = ''
-	solicitudAJAX(token, consulta)
-}
-
+// Renderizado de cada elemento de la lista de resultados de la búsqueda
 const renderVideo = (item) => {
 	const videoId = item.id.videoId
 	const titulo = item.snippet.title
@@ -78,10 +65,10 @@ const renderVideo = (item) => {
 	let li = document.createElement('li')
 	li.innerHTML = `
   <div class="lista-izquierda">
-    <a href="http://www.youtube.com/embed/${videoId}"><img src="${miniatura}"/></a>
+    <img src="${miniatura}" class="pointer" data-url="http://www.youtube.com/embed/${videoId}" onclick="verVideoModal(dataset.url)"/>
   </div>
   <div class="lista-derecha">
-    <h5><a href="http://www.youtube.com/embed/${videoId}"><span>${titulo}</span></a></h5>
+    <h5 class="pointer" data-url="http://www.youtube.com/embed/${videoId}" onclick="verVideoModal(dataset.url)">${titulo}</h5>
     <h6><span class="autor">${tituloCanal}</span> Fecha: ${fechaVideo}</h6>
     <p>${descripcion}</p>
   </div>
@@ -89,6 +76,7 @@ const renderVideo = (item) => {
 	return li
 }
 
+// Botones Siguiente y Atrás
 const getBotones = (prevPageToken, nextPageToken, consulta) => {
 	let btnOutput = ''
 	if (prevPageToken) {
@@ -109,39 +97,77 @@ const getBotones = (prevPageToken, nextPageToken, consulta) => {
 }
 
 const paginaSiguiente = () => {
-	let token = $('#boton-siguiente').data('token')
-	let consulta = $('#boton-siguiente').data('query')
+	let token = document.getElementById('boton-siguiente').dataset.token
+	let consulta = document.getElementById('boton-siguiente').dataset.query
 
-	$('#listaDeVideos').html('')
-	$('#botones').html('')
+	document.getElementById('listaDeVideos').innerHTML = ''
+	document.getElementById('botones').innerHTML = ''
 
-	solicitudAJAX(token, consulta)
+	solicitudFetch(token, consulta)
 }
 
 const paginaAnterior = () => {
-	let token = $('#boton-anterior').data('token')
-	let consulta = $('#boton-siguiente').data('query')
+	let token = document.getElementById('boton-anterior').dataset.token
+	let consulta = document.getElementById('boton-anterior').dataset.query
 
-	$('#listaDeVideos').html('')
-	$('#botones').html('')
+	document.getElementById('listaDeVideos').innerHTML = ''
+	document.getElementById('botones').innerHTML = ''
 
-	solicitudAJAX(token, consulta)
+	solicitudFetch(token, consulta)
 }
 
-// Modal de Bootstrap
+// Modal de Bootstrap para la visualización del vídeo en una ventana popup
+var myVideoModal
+var myModalSize
+var myVideoIframe
 
-const verVideoModal = () => {
-	const videoIframe = document.getElementById('videoIframe')
+const verVideoModal = (url) => {
+	myVideoModal = new bootstrap.Modal(document.getElementById('videoModal'))
+	myVideoIframe = document.getElementById('videoIframe')
+	myModalSize = document.getElementById('modalSize')
+	myModalSize.className = 'modal-dialog modal-md'
+	myVideoIframe.width = 450
+	myVideoIframe.height = 350
 	// Para que el vídeo arranque al cargar el iframe hay que añadir ?autoplay=1 al final de la url
-	videoIframe.src = 'https://www.youtube.com/embed/N66QJ2VfzXo' + '?autoplay=1'
-	const myModal = new bootstrap.Modal(document.getElementById('videoModal'))
-	myModal.show()
-
-	console.log('Click')
+	myVideoIframe.src = url + '?autoplay=1'
+	myVideoModal.show()
+	console.log('Abriendo Modal')
 }
 
-const clickBtnCerrarModalVisualizar = () => {
-	const videoIframe = document.getElementById('videoIframe')
-	videoIframe.src = ''
+const clickBtnCerrarVideoModal = () => {
+	myVideoIframe.src = ''
+	myVideoModal.hide()
 	console.log('Cerrando Modal')
+}
+
+const clickBtnMenosVideoModal = () => {
+	if (myVideoIframe.width > 800) {
+		myModalSize.className = 'modal-dialog modal-lg'
+		myVideoIframe.width = 750
+		myVideoIframe.height = 575
+	} else if (myVideoIframe.width > 500) {
+		myModalSize.className = 'modal-dialog modal-md'
+		myVideoIframe.width = 450
+		myVideoIframe.height = 350
+	} else if (myVideoIframe.width > 300) {
+		myModalSize.className = 'modal-dialog modal-sm'
+		myVideoIframe.width = 250
+		myVideoIframe.height = 185
+	}
+}
+
+const clickBtnMasVideoModal = () => {
+	if (myVideoIframe.width < 300) {
+		myModalSize.className = 'modal-dialog modal-md'
+		myVideoIframe.width = 450
+		myVideoIframe.height = 350
+	} else if (myVideoIframe.width < 500) {
+		myModalSize.className = 'modal-dialog modal-lg'
+		myVideoIframe.width = 750
+		myVideoIframe.height = 575
+	} else if (myVideoIframe.width < 800) {
+		myModalSize.className = 'modal-dialog modal-xl'
+		myVideoIframe.width = 1090
+		myVideoIframe.height = 840
+	}
 }

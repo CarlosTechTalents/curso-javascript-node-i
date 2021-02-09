@@ -12,9 +12,6 @@
 	<!-- Cargamos nuestro css de estilos personalizados -->
 	<link rel="stylesheet" href="styles.css" />
 
-	<!-- Cargamos las librerias de Ajax -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 <body>
 	<div class="container">
 		<h1 class="logo-container">You <span class="logo">Tube</span></h1>
@@ -22,19 +19,19 @@
 			<input type="text" class="form-control" placeholder="Buscar vídeo" id="videoInput" /><span class="input-group-bth"><button class="btn btn-primary" onclick="buscarVideo()">Buscar vídeo</button></span>
 		</div>
 
-		<div style="margin: 20px;">
-			<button id="verVideo" onclick="verVideoModal()">Ver Vídeo</button>
-		</div>
-
 		<ul id="listaDeVideos"></ul>
 		<div id="botones"></div>
 
 		<!-- Modal-->
-		<div id="videoModal" class="modal fade">
-			<div class=" modal-dialog">
+		<div id="videoModal" class="modal fade modal-fullscreen-sm-down " data-bs-backdrop="static">
+			<div id="modalSize" class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type=" button" id="btnCerrarModal" class="close" data-dismiss="modal" aria-hidden="true" onclick="clickBtnCerrarModalVisualizar()">×</button>
+						<button type=" class=" close" onclick="clickBtnCerrarVideoModal()">×</button>
+						<div>
+							<button type=" button" onclick="clickBtnMenosVideoModal()">-</button>
+							<button type=" button" onclick="clickBtnMasVideoModal()">+</button>
+						</div>
 						<h4 class="modal-title">Tech Talents</h4>
 					</div>
 					<div class="modal-body">
