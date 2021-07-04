@@ -12,7 +12,7 @@ mascotaEstaVacunada = true
 console.log(mascotaNombre + ' es un ' + mascotaEspecie + ' ' + mascotaRaza + ' de ' + mascotaEdad + ' años que ' + mascotaEstaVacunada + ' está vacunada')
 
 // Operadores matemáticos
-var añoActual = 2020
+var añoActual = 2021
 var mascotaAñoDeNacimiento = 2008
 
 mascotaEdad = añoActual - mascotaAñoDeNacimiento
