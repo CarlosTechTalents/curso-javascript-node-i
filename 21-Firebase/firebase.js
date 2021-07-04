@@ -1,4 +1,5 @@
 //
+//
 // Inicializa Firestore con los datos de configuración
 // La base de datos para que sea accesible sólo con los datos de configuración siguientes, tiene que ser creada en modo de prueba
 // https://firebase.google.com/docs/firestore/quickstart?authuser=0
