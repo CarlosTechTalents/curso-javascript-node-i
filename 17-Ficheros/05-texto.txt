@@ -1,0 +1,8 @@
+curso,asignatura,nota
+ESO3,Mates,9
+ESO3,Lengua,4
+ESO3,Biología,6
+ESO3,Física,9
+ESO3,Tecnología,10
+ESO3,Historia,5
+ESO3,Ética,no presentado

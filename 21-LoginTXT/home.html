@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="alCargarLaPagina()">
+  <script>
+    const alCargarLaPagina = () => {
+      const usuarioId = sessionStorage.getItem('usuarioId')
+      const usuarioNombre = sessionStorage.getItem('usuarioNombre')
+      const usuarioEmail = sessionStorage.getItem('usuarioEmail')
+      document.getElementById('homeLogin').innerHTML = `
+        <h2>Usuario logueado</h2>
+        <table>
+          <tr>
+            <th>id</th>
+            <th>usuario</th>
+            <th>email</th>
+          </tr>
+          <tr>
+            <td>${usuarioId}</td>
+            <td>${usuarioNombre}</td>
+            <td>${usuarioEmail}</td>
+          </tr>
+        </table>
+      `
+    }
+  </script>
+
+  <div id="homeLogin" style="margin: 40px;"></div>
+</body>
+
+</html>

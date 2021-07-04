@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    .contenedor {
+      border: 2px solid orange;
+      height: 500px;
+      width: 500px;
+
+    }
+
+    .cuadrado {
+      border: 2px solid deepskyblue;
+      height: 50px;
+      width: 50px;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+
+    }
+
+    .circulo {
+      border: 2px solid paleturquoise;
+      border-radius: 50%;
+      height: 50px;
+      width: 50px;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+
+    }
+  </style>
+</head>
+
+<body>
+  <div class="contenedor">
+    <div class="cuadrado">1</div>
+    <div class="circulo">2</div>
+  </div>
+</body>
+
+</html>

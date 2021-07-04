@@ -1,0 +1,72 @@
+.logo-container {
+	text-align: center;
+	padding: 25px 0px;
+	font-weight: 700;
+}
+
+.logo {
+	color: white;
+	background-color: #e3051b;
+	height: 50px;
+	border: #cccccc 1px solid;
+	border-radius: 10px;
+	padding: 8px 15px;
+}
+
+#listaDeVideos li {
+	padding: 10px 0;
+	border-bottom: 3px solid #ccc;
+	list-style: none;
+	overflow: auto;
+}
+
+.lista-izquierda {
+	float: left;
+	width: 25%;
+}
+
+.lista-izquierda img {
+	width: 100%;
+	padding: 4px;
+	border: solid #cccccc 1px;
+	cursor: pointer;
+}
+
+.lista-derecha {
+	float: right;
+	width: 73%;
+}
+
+.autor {
+	color: #f7831e;
+}
+
+.botones {
+	background: #46474a;
+	color: #ffffff;
+	border: #ccc;
+	padding: 8px 13px;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 19px;
+}
+
+.botones:hover {
+	background: #7d7e82;
+}
+
+.modal-content {
+	background-color: black;
+	border: 2px;
+	border-color: white;
+	color: orange;
+}
+
+.modal-content iframe {
+	margin: 0 auto;
+	display: block;
+}
+
+.pointer {
+	cursor: pointer;
+}

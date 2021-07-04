@@ -1,0 +1,6 @@
+id,nombre,edad
+0,Carlos,52
+1,Lola,50
+2,Guillermo,22
+3,Hugo,20
+4,Gonzalo,18

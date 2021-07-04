@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+</head>
+
+<body>
+  <div class="contenedor">
+    <div class="contenedor-login">
+      <h1>Bienvenido,<br>introduce tus credenciales</h1>
+      <form class="formulario-login" id="formularioLogin">
+        <fieldset class="username">
+          <input type="text" name="usuario" placeholder="usuario" />
+        </fieldset>
+        <fieldset class="email">
+          <input type="email" name="email" placeholder="email" />
+        </fieldset>
+        <fieldset class="password">
+          <input type="password" name="password" placeholder="password" autocomplete="off" />
+        </fieldset>
+        <button type="submit" class="btn">Iniciar sesión</button>
+      </form>
+      <a href="#" class="btn btn-social btn-google"><i class="fa fa-google"></i> Iniciar sesión con cuenta Google</a>
+      <div id="mensaje-formulario" onclick="ocultarMensaje()"></div>
+    </div>
+    <div class="contenedor-logo">
+      <img src="squid.png" alt="" height="80px" width="80px">
+    </div>
+  </div>
+  <script src="script.js"></script>
+
+</body>
+
+</html>
