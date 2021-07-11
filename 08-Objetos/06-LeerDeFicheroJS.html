@@ -6,11 +6,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <script type="application/json" src="06-Datos.json"></script>
+  <script type="application/javascript" src="06-Datos.js"></script>
 </head>
 
 <body>
-  <script type="application/json" src="06-Datos.json"></script>
-  <script type="application/javascript" src="06-Datos.js"></script>
+  <form onsubmit="actualizarForm()">
+    Nuevo Superpoder: <input type="text" id="nuevoSuperpoderForm">
+    <input type="submit" value="Submit">
+  </form>
+
+  <div>
+    Nuevo Superpoder: <input type="text" id="nuevoSuperpoder">
+    <button onclick="actualizarClick()">Actualizar</button>
+  </div>
+
   <script type="application/javascript" src="06-LeerDeFicheroJS.js"></script>
 </body>
 
