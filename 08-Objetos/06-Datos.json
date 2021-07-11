@@ -1,0 +1,17 @@
+{
+	"superheroes": [
+		{
+			"nombre": "Hurricany",
+			"superpoderes": [
+				"Destrucción"
+			]
+		},
+		{
+			"nombre": "Quit",
+			"superpoderes": [
+				"Invisibilidad",
+				"Oido supersónico"
+			]
+		}
+	]
+}
