@@ -61,7 +61,7 @@ function draw() {
 		image(nave, naveX, naveY, 80, 80)
 		naveX = naveX + incrementoNave
 
-		// Si la nave toca algún extremo cambión el sentido y el valor del incremento de X 
+		// Si la nave toca algún extremo cambión el sentido y el valor del incremento de X
 		if (naveX > 520) incrementoNave = -Math.floor(Math.random() * 10) - 1
 		if (naveX < 0) incrementoNave = Math.floor(Math.random() * 10) + 1
 
@@ -69,19 +69,18 @@ function draw() {
 		image(tanque, tanqueX, tanqueY, 140, 100)
 		if (!tanqueDestruido) tanqueX = tanqueX + incrementoTanque
 
-		// Si el tanque toca algún extremo cambión el sentido y el valor del incremento de X 
+		// Si el tanque toca algún extremo cambión el sentido y el valor del incremento de X
 		if (tanqueX > 500) incrementoTanque = -Math.floor(Math.random() * 3) - 1
 		if (tanqueX < -40) incrementoTanque = Math.floor(Math.random() * 3) + 1
 
 		// Compruebo si se ha disparado la bomba
 		if (disparoBomba) {
-
 			// Si se ha disparado la bomba compruebo a que altura está
 			// En el primer tramos de la bomba, dibujo la bomba cayendo
 			if (bombaY < 360) image(bomba, bombaX, bombaY, 40, 40)
 
 			// Cuando la bomba llega al suelo inicio la explosión y compruebo si ha alcanzado el objetivo, el tanque
-			if (bombaY > 360 && bombaY <= (360 + incrementoBomba)) {
+			if (bombaY > 360 && bombaY <= 360 + incrementoBomba) {
 				contadorExplosion = 0
 
 				// Si al llegar al suelo la bomba está cerca del tanque, sumo un punto y cambio la variabble para que el tanque se pare mientras dura la explosión
@@ -99,7 +98,7 @@ function draw() {
 			}
 
 			// Cuando finaliza la explosión cambio las variables para que el tanque se siga moviendo y se pueda lanzar otra bomba. Si ha llegado a los puntos para ganar alarga la explosión.
-			if (contadorExplosion > 100 && puntos < puntosWin || contadorExplosion > 1000 && puntos >= puntosWin) {
+			if ((contadorExplosion > 100 && puntos < puntosWin) || (contadorExplosion > 1000 && puntos >= puntosWin)) {
 				tanqueDestruido = false
 				disparoBomba = false
 				contadorExplosion = 0
